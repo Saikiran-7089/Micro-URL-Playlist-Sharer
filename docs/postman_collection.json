@@ -1,0 +1,116 @@
+{
+  "info": {
+    "name": "Micro-URL Playlist Sharer",
+    "description": "API collection for testing Micro-URL endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BASE_URL}}/api/health",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "Create Short URL",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"originalUrl\": \"https://www.google.com\"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/urls",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "urls"]
+        }
+      }
+    },
+    {
+      "name": "Get URL Statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BASE_URL}}/api/urls/{{shortCode}}/stats",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "urls", "{{shortCode}}", "stats"]
+        }
+      }
+    },
+    {
+      "name": "Redirect Short URL",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BASE_URL}}/{{shortCode}}",
+          "host": ["{{BASE_URL}}"],
+          "path": ["{{shortCode}}"]
+        }
+      }
+    },
+    {
+      "name": "Create Playlist",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Study Links\",\n  \"urls\": [\n    \"https://www.youtube.com\",\n    \"https://github.com\"\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/playlists",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "playlists"]
+        }
+      }
+    },
+    {
+      "name": "Get Playlist",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BASE_URL}}/api/playlists/{{playlistCode}}",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "playlists", "{{playlistCode}}"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "shortCode",
+      "value": "REPLACE_ME",
+      "type": "string"
+    },
+    {
+      "key": "playlistCode",
+      "value": "REPLACE_ME",
+      "type": "string"
+    }
+  ]
+}
